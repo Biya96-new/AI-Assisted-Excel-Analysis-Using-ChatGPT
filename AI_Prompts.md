@@ -2,91 +2,39 @@
 
 ## 1. Data Understanding
 
-I'm new to this dataset, so walk me through it step by step. Explain how `Budget USD` is calculated from `Budget`, `Unit`, and `Currency`. Help me understand which columns contain original data and which are derived. Identify any data quality issues. Present all findings in plain, simple sentences in Excel. Do not modify the data yet.
+I'm new to this dataset, so walk me through it step by step. Explain how Budget USD is calculated from Budget, Unit, and Currency. Help me understand which columns are entered directly and which are derived. Also, identify any data quality issues in the dataset. Present all the findings in plain, simple sentences in Excel.
 
 ## 2. Data Cleaning
 
-### Remove Empty Column
+Remove the empty column G from the Movies table.
 
-Remove the completely empty column G from the Movies table. Do not change any other data.
+Review the duplicate Thor: Love and Thunder record. Compare the records, keep one entry, and remove the duplicate. Do the same for Parasite. Make sure you retain one correct entry for each movie.
 
-### Review and Remove Duplicates
+Remove extra spaces from movie titles and studio names while preserving their original spelling and names.
 
-Review the duplicate records for *Thor: Love and Thunder*. Compare the records, keep one correct entry, and remove the confirmed duplicate.
+## 3. ROI Calculation and Formatting
 
-Review the duplicate record for *Parasite*. Compare the records and remove the duplicate if confirmed, keeping one correct entry. Do not remove records simply because their titles are similar.
+In the MovieFinancials table, create a new column called `ROI%` immediately after `Revenue (USD mm)`.
 
-### Clean Text Fields
+Calculate ROI as (Revenue USD minus Budget USD) divided by Budget USD. If the budget or revenue is missing, leave the cell blank. If the budget is zero, leave the cell blank to avoid division errors. Make sure no formula errors appear in the sheet.
 
-Remove leading and trailing spaces and unnecessary extra spaces from movie titles and studio names. Preserve the original spelling and intended names.
+Format ROI as a percentage with no decimal places. Apply conditional formatting to highlight loss-making movies in red and movies with ROI above 1000% in amber.
 
-## 3. Data Transformation
+## 4. Watch Verdict
 
-### Create ROI%
+Next to the ROI% column, create a new column called `Watch Verdict` based on the IMDb rating.
 
-In the `MovieFinancials` table, create a new column named `ROI%` immediately after `Revenue (USD mm)`.
+Set the verdict to Must Watch if the rating is 8 or above, Worth a Watch if the rating is 6 or above but below 8, Skip if the rating is below 6, and Not Rated if the rating is missing.
 
-Calculate ROI using:
+Use a formula so the verdict updates automatically when the IMDb rating changes. Make sure the formula handles missing ratings without errors.
 
-`ROI% = (Revenue USD - Budget USD) / Budget USD`
+## 5. Language Summary
 
-If the budget or revenue is missing, or if the budget is zero, leave the result blank. Ensure no formula errors appear in the worksheet.
+Create a new sheet called `Language Summary` and build a summary by language name, not language ID.
 
-Format ROI as a percentage with no decimal places. Apply conditional formatting to highlight loss-making movies with negative ROI in red and movies with ROI above 1000% in amber. Preserve existing data.
+For each language, show the number of movies, average IMDb rating, and total profit in USD. Calculate total profit as revenue in USD minus budget in USD. Use consistent currency units and handle missing values appropriately.
 
-### Create Watch Verdict
+## 6. Chart Creation and Formatting
 
-Create a new column named `Watch Verdict` immediately after the `ROI%` column.
+On the same Language Summary sheet, create a chart showing total profit by language. Arrange the languages in descending order of total profit. Remove the numerical scale and labels from the Y-axis, remove the titles from both the X-axis and Y-axis, and add data labels for better readability. Give the chart a suitable title: `Total Profit by Language`.
 
-Assign verdicts using these rules:
-- Must Watch: IMDb rating is 8 or above.
-- Worth a Watch: IMDb rating is 6 or above but below 8.
-- Skip: IMDb rating is below 6.
-- Not Rated: IMDb rating is missing.
-
-Use a formula that updates automatically when the IMDb rating changes. Handle missing ratings without formula errors.
-
-## 4. Data Analysis
-
-### Create Language Summary
-
-Create a new worksheet named `Language Summary`. Summarize the movies by language name, not language ID.
-
-Include these columns:
-- Language
-- Number of Movies
-- Average IMDb Rating
-- Total Profit (USD)
-
-Calculate total profit as:
-
-`Total Profit = Revenue USD - Budget USD`
-
-Use consistent currency units, exclude missing IMDb ratings when calculating averages, avoid counting confirmed duplicate records, and handle missing financial values appropriately. Keep the summary clearly structured and easy to read.
-
-## 5. Data Visualization
-
-### Create Total Profit Chart
-
-On the `Language Summary` worksheet, create a chart showing total profit by language. Use `Language` for the categories and `Total Profit (USD)` for the values.
-
-### Format the Chart
-
-- Sort languages by total profit in descending order.
-- Remove the numerical scale and labels from the Y-axis.
-- Remove the X-axis and Y-axis titles.
-- Add data labels to display profit values.
-- Set the chart title to `Total Profit by Language`.
-- Keep the chart clean, readable, and easy to compare.
-- Do not modify the underlying summary data.
-
-## 6. Validation and Quality Assurance
-
-Review the completed workbook and perform the following checks:
-
-1. **Row Count:** Compare the total movie count in `MovieFinancials` with the total represented in `Language Summary`. Confirm whether they match.
-2. **Manual ROI Verification:** Calculate the ROI for *The Godfather* manually using its revenue and budget in USD. Compare the result with the Excel calculation.
-3. **Summary Reconciliation:** Compare movie counts by language in `Language Summary` against the corresponding records in `MovieFinancials`.
-4. **Filter Test:** Filter `Watch Verdict` to show only `Must Watch` movies. Verify that all displayed movies have IMDb ratings of 8 or above.
-5. **Formula and Formatting Check:** Check for formula errors, incorrect number formatting, unintended changes, and missing values that could affect the analysis.
-6. **Final Report:** Present the results of each check in plain, simple sentences. Identify any discrepancies and explain the proposed correction before making further changes.
