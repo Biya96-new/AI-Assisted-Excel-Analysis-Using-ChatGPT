@@ -36,6 +36,12 @@ The goal was to evaluate AI's efficiency while verifying the accuracy and reliab
 - Clear prompts and iterative refinements improved the outputs.
 - AI can introduce unintended changes that require human review.
 - Manual verification and analytical fundamentals remain essential for reliable results.
+- 
+## AI Prompts
+
+The analysis was performed using simple, natural-language prompts through the ChatGPT add-in for Excel. The prompts were organized into six stages: data understanding, data cleaning, data transformation, data analysis, visualization, and validation.
+
+See [AI_Prompts.md](AI_Prompts.md) for the complete prompts used in the project.
 
 ## Conclusion
 
